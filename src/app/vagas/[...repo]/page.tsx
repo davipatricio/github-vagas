@@ -56,6 +56,10 @@ export default function Home({
 
           {isLoaded &&
             issues.map((issue) => <JobCard issue={issue} key={issue.id} />)}
+
+          {issues.length === 0 && (
+            <span className="no-jobs">Nenhuma vaga em aberto encontrada.</span>
+          )}
         </JobsContainer>
       </Container>
 

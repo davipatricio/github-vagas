@@ -26,6 +26,17 @@ export const JobsContainer = styled.div`
   border: 1px solid #495057;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+
+  padding-bottom: 15px;
+
+  span.no-jobs {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const JobsHeader = styled.div`
@@ -38,4 +49,6 @@ export const JobsHeader = styled.div`
   border-bottom: 1px solid #495057;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+
+  margin-bottom: 15px;
 `;
