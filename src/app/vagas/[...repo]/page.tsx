@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client';
 
-import Link from 'next/link';
-import { notFound, useRouter } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import Footer from '@/components/Footer';
+import JobCard from '@/components/JobCard';
 import Navbar from '@/components/Navbar';
 import { allRepos } from '@/data/all-repos';
 import type { Issue } from '@/utils/getIssues';
 import getIssues from '@/utils/getIssues';
-import { Container, Job, JobsContainer, JobsHeader } from './styles';
+import { Container, JobsContainer, JobsHeader } from './styles';
 
 export default function Home({
   params: { repo },
@@ -18,7 +18,6 @@ export default function Home({
 }) {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const router = useRouter();
 
   const fullRepo = repo.join('/') as `${string}/${string}`;
 
@@ -31,13 +30,6 @@ export default function Home({
       return getIssues(fullRepo, page);
     },
     [fullRepo]
-  );
-
-  const handleClick = useCallback(
-    (url: string) => {
-      router.push(url);
-    },
-    [router]
   );
 
   if (!isLoaded) {
@@ -63,49 +55,7 @@ export default function Home({
           </JobsHeader>
 
           {isLoaded &&
-            issues.map((issue) => (
-              <Job
-                key={issue.id}
-                onClick={() => handleClick(issue.html_url)}
-                onKeyPress={(e) =>
-                  e.key === 'Enter' && handleClick(issue.html_url)
-                }
-                role="button"
-                tabIndex={0}
-              >
-                <h3>{issue.title}</h3>
-
-                <div className="labels">
-                  {issue.labels.map((label) => (
-                    <span
-                      key={label.id}
-                      style={{
-                        backgroundColor: `#${label.color}`,
-                        // make sure the text is readable
-                        color: label.color > '666666' ? '#000' : '#fff',
-                        padding: '5px',
-                        borderRadius: '5px',
-                        fontSize: '0.9rem',
-                      }}
-                    >
-                      {label.name}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="data">
-                  <span>#{issue.number}</span>
-                  <span>há 2 dias</span>
-                  <span>
-                    por{' '}
-                    <Link href={issue.user.html_url}>{issue.user.login}</Link>
-                  </span>
-                  <Link href={issue.html_url} target="_blank">
-                    ver no GitHub
-                  </Link>
-                </div>
-              </Job>
-            ))}
+            issues.map((issue) => <JobCard issue={issue} key={issue.id} />)}
         </JobsContainer>
       </Container>
 
