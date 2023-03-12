@@ -1,6 +1,7 @@
 import type { Label } from './getLabels';
 
 export interface Issue {
+  created_at: string;
   html_url: string;
   id: number;
   labels: Label[];

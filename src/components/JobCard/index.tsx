@@ -14,6 +14,14 @@ export default function JobCard({ issue }: { issue: Issue }) {
     [router]
   );
 
+  const calculateDate = useCallback((createdDate: string) => {
+    const date = new Date(createdDate);
+    const now = new Date();
+
+    const diff = Math.abs(now.getTime() - date.getTime());
+    return Math.ceil(diff / (1_000 * 3_600 * 24));
+  }, []);
+
   return (
     <Job
       key={issue.id}
@@ -44,7 +52,7 @@ export default function JobCard({ issue }: { issue: Issue }) {
 
       <div className="data">
         <span>#{issue.number}</span>
-        <span>há 2 dias</span>
+        <span>há {calculateDate(issue.created_at)} dias</span>
         <span>
           por <Link href={issue.user.html_url}>{issue.user.login}</Link>
         </span>
