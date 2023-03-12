@@ -8,9 +8,9 @@ export default function Navbar() {
     <Container>
       <Link href="/">GitHubVagas</Link>
 
-      <div>
-        <Link href="https://github.com/davipatricio">Autor</Link>
-      </div>
+      <span>
+        <Link href="https://github.com/davipatricio/github-vagas">GitHub</Link>
+      </span>
     </Container>
   );
 }

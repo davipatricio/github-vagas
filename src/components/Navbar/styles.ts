@@ -20,7 +20,7 @@ export const Container = styled.header`
     }
   }
 
-  div a {
+  span a {
     color: #e7f6f2;
     font-size: 1.4rem;
   }
