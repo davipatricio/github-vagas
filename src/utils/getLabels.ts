@@ -4,6 +4,7 @@ export interface Label {
   name: string;
 }
 
-export default function getIssues(repo: string, page = 1) {
-  console.log(repo, page);
+export default async function getLabels(repo: string): Promise<Label[]> {
+  const response = await fetch(`https://api.github.com/repos/${repo}/labels`);
+  return response.json();
 }

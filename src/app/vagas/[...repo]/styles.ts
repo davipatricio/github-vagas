@@ -51,4 +51,12 @@ export const JobsHeader = styled.div`
   border-top-right-radius: 5px;
 
   margin-bottom: 15px;
+
+  select {
+    background-color: #212529;
+    color: #fff;
+
+    padding: 10px;
+    width: 150px;
+  }
 `;
