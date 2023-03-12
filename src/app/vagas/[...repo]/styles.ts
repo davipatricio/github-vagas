@@ -49,6 +49,7 @@ export const JobsHeader = styled.div`
 
   select {
     background-color: #212529;
+    border-radius: 15px;
     color: #fff;
 
     padding: 10px;

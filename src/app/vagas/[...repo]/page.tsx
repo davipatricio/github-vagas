@@ -30,11 +30,23 @@ export default function Home({
   }
 
   const fetchIssues = useCallback(
-    (page: number) => getIssues(fullRepo, page),
+    (page: number) =>
+      getIssues({
+        repo: fullRepo,
+        page,
+        labels:
+          filterRef.current?.value === 'no-filter'
+            ? undefined
+            : filterRef.current?.value,
+      }),
     [fullRepo]
   );
 
   const fetchLabels = useCallback(() => getLabels(fullRepo), [fullRepo]);
+
+  const handleFilterChange = useCallback(() => {
+    fetchIssues(1).then(setIssues).catch(console.error);
+  }, [fetchIssues]);
 
   if (!isLoaded) {
     Promise.all([fetchIssues(1), fetchLabels()])
@@ -56,7 +68,11 @@ export default function Home({
         <JobsContainer>
           <JobsHeader>
             {/* options */}
-            <select placeholder="Filtrar por" ref={filterRef}>
+            <select
+              placeholder="Filtrar por"
+              ref={filterRef}
+              onChange={handleFilterChange}
+            >
               <option value="no-filter" selected>
                 Nenhum filtro
               </option>

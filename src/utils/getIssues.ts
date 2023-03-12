@@ -13,12 +13,21 @@ export interface Issue {
   };
 }
 
-export default async function getIssues(
-  repo: string,
-  page = 1
-): Promise<Issue[]> {
+interface GetIssuesParams {
+  labels?: string | undefined;
+  page?: number;
+  repo: string;
+}
+
+export default async function getIssues({
+  repo,
+  page = 1,
+  labels,
+}: GetIssuesParams): Promise<Issue[]> {
   const response = await fetch(
-    `https://api.github.com/repos/${repo}/issues?state=open&page=${page}&per_page=15`
+    `https://api.github.com/repos/${repo}/issues?state=open&page=${page}&per_page=15${
+      labels ? `&labels=${labels}` : ''
+    }`
   );
   return response.json();
 }
