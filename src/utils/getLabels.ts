@@ -6,7 +6,7 @@ export interface Label {
 
 export default async function getLabels(repo: string): Promise<Label[]> {
   const response = await fetch(
-    `https://api.github.com/repos/${repo}/labels&per_page=100`
+    `https://api.github.com/repos/${repo}/labels?per_page=100`
   );
   return response.json();
 }
