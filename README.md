@@ -1,6 +1,7 @@
 ## GitHub Vagas Brasil
 
 Encontre vagas de emprego para iniciar sua carreira em tecnologia.
+
 Projeto inspirado em: https://github.com/rafaelsilva81/githubvagasbrasil
 
 ---
