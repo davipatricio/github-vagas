@@ -72,7 +72,7 @@ export default function Home({
           {isLoaded &&
             issues.map((issue) => <JobCard issue={issue} key={issue.id} />)}
 
-          {!isLoaded && issues.length === 0 && (
+          {isLoaded && issues.length === 0 && (
             <span className="no-jobs">Nenhuma vaga em aberto encontrada.</span>
           )}
         </JobsContainer>
