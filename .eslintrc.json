@@ -1,0 +1,56 @@
+{
+  "extends": [
+    "neon/common",
+    "neon/browser",
+    "neon/node",
+    "neon/typescript",
+    "neon/edge",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended",
+    "next/core-web-vitals"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "jsx-a11y",
+    "validate-jsx-nesting",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "ignorePatterns": [
+    "dist/",
+    ".next",
+    "node_modules",
+    "*.js"
+  ],
+  "rules": {
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/require-await": "error",
+    "@typescript-eslint/promise-function-async": [
+      "error",
+      {
+        "checkArrowFunctions": false
+      }
+    ],
+    "promise/prefer-await-to-then": "off",
+    "no-warning-comments": "off",
+    "unicorn/no-unsafe-regex": "off",
+    "prefer-named-capture-group": "off",
+    "id-length": "off",
+    "validate-jsx-nesting/no-invalid-jsx-nesting": "error",
+    "require-await": "off",
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false,
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  }
+}
