@@ -1,6 +1,7 @@
 'use client';
 
 import Card from '@/components/Card';
+import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import categories from '@/data/categories';
 import tools from '@/data/tools';
@@ -32,6 +33,8 @@ export default function Home() {
           </div>
         </CategoryContainer>
       </Container>
+
+      <Footer />
     </>
   );
 }

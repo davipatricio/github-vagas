@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import { notFound, useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
+import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { allRepos } from '@/data/all-repos';
 import type { Issue } from '@/utils/getIssues';
@@ -107,6 +108,8 @@ export default function Home({
             ))}
         </JobsContainer>
       </Container>
+
+      <Footer />
     </>
   );
 }
