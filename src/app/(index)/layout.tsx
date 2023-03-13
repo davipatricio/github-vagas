@@ -8,6 +8,9 @@ export const metadata = {
   title: 'GitHub Vagas Brasil',
   description:
     'Encontre vagas de emprego para iniciar sua carreira em tecnologia.',
+  verification: {
+    google: '2xJbRdcKuFm-bPMz7eIVWdHgC7ixwnpeBPlc1nqUTQE',
+  },
 };
 
 export default function RootLayout({
