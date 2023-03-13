@@ -1,19 +1,9 @@
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import type { Issue } from '@/utils/getIssues';
 import { Job } from './style';
 
 export default function JobCard({ issue }: { issue: Issue }) {
-  const router = useRouter();
-
-  const handleClick = useCallback(
-    (url: string) => {
-      router.push(url);
-    },
-    [router]
-  );
-
   const calculateDate = useCallback((createdDate: string) => {
     const date = new Date(createdDate);
     const now = new Date();
@@ -23,13 +13,7 @@ export default function JobCard({ issue }: { issue: Issue }) {
   }, []);
 
   return (
-    <Job
-      key={issue.id}
-      onClick={() => handleClick(issue.html_url)}
-      onKeyPress={(e) => e.key === 'Enter' && handleClick(issue.html_url)}
-      role="button"
-      tabIndex={0}
-    >
+    <Job key={issue.id} href={issue.html_url} target="_blank">
       <h3>{issue.title}</h3>
 
       <div className="labels">
@@ -54,7 +38,10 @@ export default function JobCard({ issue }: { issue: Issue }) {
         <span>#{issue.number}</span>
         <span>há {calculateDate(issue.created_at)} dias</span>
         <span>
-          por <Link href={issue.user.html_url}>{issue.user.login}</Link>
+          por{' '}
+          <Link href={issue.user.html_url} target="_blank">
+            {issue.user.login}
+          </Link>
         </span>
         <Link href={issue.html_url} target="_blank">
           ver no GitHub

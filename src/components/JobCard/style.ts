@@ -1,6 +1,7 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
-export const Job = styled.div`
+export const Job = styled(Link)`
   display: flex;
   flex-direction: column;
   gap: 5px;
