@@ -72,10 +72,9 @@ export default function Home({
               placeholder="Filtrar por"
               ref={filterRef}
               onChange={handleFilterChange}
+              value={filterRef.current?.value ?? 'no-filter'}
             >
-              <option value="no-filter" selected>
-                Nenhum filtro
-              </option>
+              <option value="no-filter">Nenhum filtro</option>
 
               {labels.map((label) => (
                 <option value={label.name} key={label.id}>
